@@ -22,7 +22,7 @@
 #   2. Python v2.5 or Python v2.6
 #   3. Python v3.0
 # Fill in your answer in the next line of code ("1", "2", or "3"):
-
+import time
 ANSWER_1 = 'fill-me-in'
 
 
@@ -31,13 +31,36 @@ ANSWER_1 = 'fill-me-in'
 # Problem 2.1: Warm-Up Stretch
 
 def cube(x):
-    raise NotImplementedError
-
+    """take an int and return the cube of the first input (int)"""
+    return x**3
+    
 def factorial(x):
-    raise NotImplementedError
+    """Take an int and return the factorial for that number"""
+
+    answer = 1
+
+    if x < 0:
+        raise Exception, "factorial: input must not be negative"
+
+    else:
+        for i in range(1, x + 1):
+            answer = answer * i
+
+    return answer
 
 def count_pattern(pattern, lst):
-    raise NotImplementedError
+    """Take a tuple as pattern and a tuple to check and count occurence"""
+
+    p = ""
+    l = ""
+
+    for i in pattern:
+        p += i
+
+    for i in lst:
+        l += i 
+
+    return l.count(p)
 
 
 # Problem 2.2: Expression depth
