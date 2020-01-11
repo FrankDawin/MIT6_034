@@ -22,7 +22,7 @@
 #   2. Python v2.5 or Python v2.6
 #   3. Python v3.0
 # Fill in your answer in the next line of code ("1", "2", or "3"):
-import time
+
 ANSWER_1 = 'fill-me-in'
 
 
@@ -48,31 +48,66 @@ def factorial(x):
 
     return answer
 
+
+p = ("a", "t")
+l = ("a", "t", "a", "c", "a", "t", "a", "t")
+
 def count_pattern(pattern, lst):
     """Take a tuple as pattern and a tuple to check and count occurence"""
 
-    p = ""
-    l = ""
+    answer = 0
 
-    for i in pattern:
-        p += i
+    for i in range(len(lst)):
+        if lst[i] == pattern[0]:
+            if lst[i+1] == pattern[1]:
+                answer += 1
 
-    for i in lst:
-        l += i 
-
-    return l.count(p)
-
+    return answer
 
 # Problem 2.2: Expression depth
 
-def depth(expr):
-    raise NotImplementedError
+def depth(expr, answer = 0):
+    """Take an expression and return an int representing the depth"""
+
+    d = []
+
+    for i in expr:
+        if isinstance(i, (list, tuple)):
+            answer += 1
+            return depth(i, answer)
+        
+    d.append(answer)
+    
+    return answer      
 
 
 # Problem 2.3: Tree indexing
 
+ex = (((1, 2), 3), (4, (5, 6)), 7, (8, 9, 10))
+
+
 def tree_ref(tree, index):
-    raise NotImplementedError
+    """Function to access data in a tree"""
+
+    answer = None
+    current_branch = None
+
+    if len(tree) == 0:
+        raise ValueError, "No input"
+
+    elif len(index) == 1:
+        return tree[index[0]]
+
+    elif len(index) == 2:
+        return tree[index[0]][index[1]]
+
+    elif len(index) == 3:
+        return tree[index[0]][index[1]][index[2]]
+            
+    else:
+        raise ValueError, "Not a tuple"
+
+    return answer
 
 
 # Section 3: Symbolic algebra
@@ -88,13 +123,13 @@ from algebra_utils import distribution, encode_sumprod, decode_sumprod
 # Please answer these questions inside the double quotes.
 
 # When did you take 6.01?
-WHEN_DID_YOU_TAKE_601 = ""
+WHEN_DID_YOU_TAKE_601 = "Last year"
 
 # How many hours did you spend per 6.01 lab?
-HOURS_PER_601_LAB = ""
+HOURS_PER_601_LAB = "2-20 hours"
 
 # How well did you learn 6.01?
-HOW_WELL_I_LEARNED_601 = ""
+HOW_WELL_I_LEARNED_601 = "Good progression and understanding"
 
 # How many hours did this lab take?
-HOURS = ""
+HOURS = "Fucking long time"
