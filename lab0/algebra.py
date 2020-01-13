@@ -50,8 +50,9 @@
 # True
 
 class Expression:
-    "This abstract class does nothing on its own."
+    """This abstract class does nothing on its own."""
     pass
+
 
 class Sum(list, Expression):
     """
@@ -128,6 +129,7 @@ class Product(list, Expression):
                 factors.append(factor)
         return Product(factors)
 
+
 def simplify_if_possible(expr):
     """
     A helper function that guards against trying to simplify a non-Expression.
@@ -140,6 +142,7 @@ def simplify_if_possible(expr):
 # You may find the following helper functions to be useful.
 # "multiply" is provided for you; but you will need to write "do_multiply"
 # if you would like to use it.
+
 
 def multiply(expr1, expr2):
     """
@@ -173,6 +176,21 @@ def do_multiply(expr1, expr2):
     Look above for details on the Sum and Product classes. The Python operator
     '*' will not help you.
     """
-    # Replace this with your solution.
-    raise NotImplementedError
+
+    if isinstance(expr1, Sum) and isinstance(expr2, Sum):
+        pass
+
+    elif isinstance(expr1, Sum) and isinstance(expr2, Product):
+        pass
+
+    elif isinstance(expr1, Product) and isinstance(expr2, Sum):
+        pass
+
+    elif isinstance(expr1, Product) and isinstance(expr2, Product):
+        pass
+
+    else:
+        raise ValueError("Not an example")
+
+
 

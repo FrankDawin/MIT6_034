@@ -23,7 +23,7 @@
 #   3. Python v3.0
 # Fill in your answer in the next line of code ("1", "2", or "3"):
 
-ANSWER_1 = 'fill-me-in'
+ANSWER_1 = '2'
 
 
 # Section 2: Programming warmup _____________________________________________
@@ -33,7 +33,8 @@ ANSWER_1 = 'fill-me-in'
 def cube(x):
     """take an int and return the cube of the first input (int)"""
     return x**3
-    
+
+
 def factorial(x):
     """Take an int and return the factorial for that number"""
 
@@ -52,6 +53,7 @@ def factorial(x):
 p = ("a", "t")
 l = ("a", "t", "a", "c", "a", "t", "a", "t")
 
+
 def count_pattern(pattern, lst):
     """Take a tuple as pattern and a tuple to check and count occurence"""
 
@@ -66,7 +68,8 @@ def count_pattern(pattern, lst):
 
 # Problem 2.2: Expression depth
 
-def depth(expr, answer = 0):
+
+def depth2(expr, answer = 0):
     """Take an expression and return an int representing the depth"""
 
     d = []
@@ -81,10 +84,32 @@ def depth(expr, answer = 0):
     return answer      
 
 
-# Problem 2.3: Tree indexing
+def depth3(expr):
+    """Take an expression and return an int representing the depth"""
+        
+    if isinstance(expr, tuple):
+        return 1 + max(depth(a) for a in expr)
+
+    else:
+        return 0
+        
+
+def depth4(expr):
+    d = lambda expr: isinstance(expr, tuple)
+    answer = max(map(d, expr))+1
+
+    return answer
+
+
+def depth(expr, count=0):
+    return count if not isinstance(expr, (list, tuple)) else max([depth(x, count+1) for x in expr])
+
 
 ex = (((1, 2), 3), (4, (5, 6)), 7, (8, 9, 10))
+print(depth(ex))
 
+
+# Problem 2.3: Tree indexing
 
 def tree_ref(tree, index):
     """Function to access data in a tree"""
@@ -103,6 +128,9 @@ def tree_ref(tree, index):
 
     elif len(index) == 3:
         return tree[index[0]][index[1]][index[2]]
+
+    elif len(index) == 4:
+        return tree[index[0]][index[1]][index[2]][index[3]]
             
     else:
         raise ValueError, "Not a tuple"
@@ -132,4 +160,4 @@ HOURS_PER_601_LAB = "2-20 hours"
 HOW_WELL_I_LEARNED_601 = "Good progression and understanding"
 
 # How many hours did this lab take?
-HOURS = "Fucking long time"
+HOURS = "Real long time"
