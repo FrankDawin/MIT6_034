@@ -49,6 +49,9 @@
 # >>> isinstance(Sum([1,2,3]), Expression) # Sums and Products are both Expressions
 # True
 
+from itertools import combinations
+
+
 class Expression:
     """This abstract class does nothing on its own."""
     pass
@@ -177,20 +180,51 @@ def do_multiply(expr1, expr2):
     '*' will not help you.
     """
 
+    # expr1.simplify()
+    # expr2.simplify()
+
+    answer = ""
+
     if isinstance(expr1, Sum) and isinstance(expr2, Sum):
-        pass
+        print("{} branch 1".format(expr1))
+        print("{} branch 1".format(expr2))
+
+        e1 = list(expr1)
+        e2 = list(expr2)
+        e3 = e1 + e2
+
+        return Sum(e3)
 
     elif isinstance(expr1, Sum) and isinstance(expr2, Product):
+        # print("{} branch 2".format(expr1))
+        # print("{} branch 2".format(expr2))
+        #
+        # answer = [(x, y) for x in expr1 for y in expr2]
+        # print(answer)
         pass
 
     elif isinstance(expr1, Product) and isinstance(expr2, Sum):
+        # print("{} branch 3".format(expr1))
+        # print("{} branch 3".format(expr2))
+        #
+        # answer = [(x, y) for x in expr1 for y in expr2]
+        # print(answer)
         pass
 
     elif isinstance(expr1, Product) and isinstance(expr2, Product):
-        pass
+        # print("{} branch 4".format(expr1))
+        # print("{} branch 4".format(expr2))
 
-    else:
-        raise ValueError("Not an example")
+        e1 = list(expr1)
+        e2 = list(expr2)
+        e3 = e1+e2
+
+        for i in e3:
+            if i is None:
+                e3.remove(i)
+
+        return Product(e3)
+
 
 
 
